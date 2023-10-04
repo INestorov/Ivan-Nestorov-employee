@@ -42,9 +42,8 @@ public class Main {
     public static LocalDate dateBuilder(String date) throws DataFormatException {
         String dateTrimmed = date.trim();
         String datePattern = dateFormatter(dateTrimmed);
-        DateTimeFormatter df =  DateTimeFormatter.ofPattern(datePattern, Locale.ITALIAN);
+        DateTimeFormatter df =  DateTimeFormatter.ofPattern(datePattern, Locale.getDefault());
         LocalDate formattedDate = LocalDate.parse(date, df);
-        System.out.println(formattedDate);
         return formattedDate;
     }
     public static String dateFormatter(String date) throws DataFormatException {
@@ -83,7 +82,6 @@ public class Main {
 
             sb.append("yyyy");
         }
-        System.out.println(sb.toString());
         return sb.toString();
     }
 }
