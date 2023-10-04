@@ -60,6 +60,9 @@ public class EmployeePair {
                 '}';
     }
 
+    /***
+     * Calculates the duration that a pair has worked together.
+     */
     public static long calculateDays(Employee employee1, Employee employee2){
         LocalDate fromDateEmp1 = employee1.getDateFrom();
         LocalDate toDateEmp1 = employee1.getDateTo();

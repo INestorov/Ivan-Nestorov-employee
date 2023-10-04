@@ -16,15 +16,17 @@ public class EmployeeProjManager {
     }
 
     /***
-     * This function
-     * @param employee
-     * @return
+     * Fills the hashMap, the key is the projectId, the values are the Employees.
      */
     public boolean addEmployee(Employee employee) {
         if(!mapProjIdEmployee.containsKey(employee.getProjectId()))
             mapProjIdEmployee.put(employee.getProjectId(), new ArrayList<>());
         return mapProjIdEmployee.get(employee.getProjectId()).add(employee);
     }
+
+    /***
+     * Prints the employee pair, the projectID with the longest working together duration.
+     */
 
     public void getLongestProject() {
         if(employeePair == null) getLongestCollaboration();
@@ -39,6 +41,10 @@ public class EmployeeProjManager {
             }
         }
     }
+
+    /***
+     * Returns the pair, which worked the longest on a project.
+     */
     public void getLongestCollaboration() {
         List<EmployeeLongestCollaboration> elc = new ArrayList<>();
         for(List<Employee> employees: mapProjIdEmployee.values()) {
@@ -49,6 +55,9 @@ public class EmployeeProjManager {
         assert employeeLongestCollaboration != null;
         employeePair = employeeLongestCollaboration.getEmployeePair();
     }
+    /**
+     * Iterates over all the employees, who have worked on the same project and returns the pair, who worked the longest on the project.
+     */
     public EmployeeLongestCollaboration computeLongestCollaboration(List<Employee> employees){
         Employee[] empArr = employees.toArray(new Employee[0]);
         EmployeeLongestCollaboration elc = new EmployeeLongestCollaboration();

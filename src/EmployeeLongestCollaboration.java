@@ -34,11 +34,17 @@ public class EmployeeLongestCollaboration {
         return employeeWorkingPair.toString();
     }
 
+    /***
+     * Updates the current pair, if longer duration is found.
+     */
     public void updateIfLongerWorked(Employee employee1, Employee employee2) {
         long daysTogether = EmployeePair.calculateDays(employee1, employee2);
         if(daysTogether > employeeWorkingPair.getDays()) updatePair(employee1, employee2, daysTogether);
     }
 
+    /***
+     * Updates the EmployeePair, by providing the two employees, duration and project ID.
+     */
     private void updatePair(Employee employee1, Employee employee2, long daysTogether) {
         employeeWorkingPair = new EmployeePair(employee1.getEmployeeId(), employee2.getEmployeeId(),
                 employee1.getProjectId(), daysTogether);

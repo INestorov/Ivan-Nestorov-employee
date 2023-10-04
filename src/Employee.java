@@ -8,6 +8,10 @@ public class Employee {
     private LocalDate dateTo;
     public Employee() {
     }
+
+    /***
+     * Throws exception if the start date is after the end date.
+     */
     public Employee(long employeeId, long projectId, LocalDate dateFrom, LocalDate dateTo) throws InvalidTimeframeException {
         if(dateFrom.isAfter(dateTo)) throw new InvalidTimeframeException("Start date - %s is before end date - %s".formatted(dateFrom, dateTo));
         this.employeeId = employeeId;

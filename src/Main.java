@@ -23,6 +23,9 @@ public class Main {
         }
     }
 
+    /***
+     * Parses the CSV data and puts the Employees in EmployeeProjManager.
+     */
     public static EmployeeProjManager parseCSV(String fileLocation) {
         EmployeeProjManager employeeProjManager = new EmployeeProjManager();
         try(BufferedReader bf = new BufferedReader(new FileReader(fileLocation))) {
@@ -39,6 +42,10 @@ public class Main {
         }
         return employeeProjManager;
     }
+
+    /***
+     * Method to return LocalDate from the read String date from CSV file.
+     */
     public static LocalDate dateBuilder(String date) throws DataFormatException {
         String dateTrimmed = date.trim();
         String datePattern = dateFormatter(dateTrimmed);
@@ -46,6 +53,13 @@ public class Main {
         LocalDate formattedDate = LocalDate.parse(date, df);
         return formattedDate;
     }
+
+    /***
+     * Preparing the data string for the formatBuilder method.
+     * @param date
+     * @return
+     * @throws DataFormatException
+     */
     public static String dateFormatter(String date) throws DataFormatException {
         if(date.contains(".")) return dateFormatBuilder(date, "\\.");
         if(date.contains("-")) return dateFormatBuilder(date, "-");
@@ -54,6 +68,9 @@ public class Main {
         throw new DataFormatException("Unsupported date format is provided.");
     }
 
+    /***
+     * Transforming the date string to acceptable format pattern by the DataFormater.
+     */
     public static String dateFormatBuilder(String date, String delim) {
         StringBuilder sb = new StringBuilder();
         String[] val = date.split(delim);
